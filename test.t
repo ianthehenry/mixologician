@@ -30,7 +30,7 @@ Set up some helpers that we'll use.
   >   drink=$1
   >   shift
   >   for ingredient in "$@"; do
-  >     echo "$drink:$ingredient" >>recipes
+  >     echo "$drink <- $ingredient" >>recipes
   >   done
   > }
 
@@ -41,7 +41,7 @@ our book.
   $ add_recipe "shot of vodka" vodka
   $ runtest
   Enables
-  vodka:shot of vodka
+  vodka -> shot of vodka
   
   Mixable
 
@@ -61,7 +61,7 @@ Great. Now let's try a real cocktail:
   $ add_recipe "vodka martini" vodka "dry vermouth"
   $ runtest
   Enables
-  dry vermouth:vodka martini
+  dry vermouth -> vodka martini
   
   Mixable
 
@@ -84,9 +84,9 @@ Now let's make sure "subtyping" works.
   $ buy "triple sec"
   $ runtest
   Enables
-  reposado tequila:margarita
-  tequila:margarita
-  blanco tequila:margarita
+  reposado tequila -> margarita
+  tequila -> margarita
+  blanco tequila -> margarita
   
   Mixable
 
@@ -116,7 +116,7 @@ show up on my shopping list.
 
   $ runtest
   Enables
-  lime cordial:gimlet
+  lime cordial -> gimlet
   
   Mixable
 
@@ -128,8 +128,8 @@ But once I buy sugar...
   $ buy sugar
   $ runtest
   Enables
-  lime:gimlet
-  lime cordial:gimlet
+  lime -> gimlet
+  lime cordial -> gimlet
   
   Mixable
 
@@ -142,7 +142,7 @@ need to make a gimlet is lime.
   $ sell "lime juice"
   $ runtest
   Enables
-  lime:gimlet
+  lime -> gimlet
   
   Mixable
 
@@ -157,7 +157,7 @@ of that ingredient:
   $ add_recipe "sour limes" "lime" "lime juice"
   $ runtest
   Enables
-  lime:sour limes
+  lime -> sour limes
   
   Mixable
 

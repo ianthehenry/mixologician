@@ -5,7 +5,7 @@
 .input Has(filename="bar")
 
 .decl Needs(drink : Recipe, ingredient : Ingredient)
-.input Needs(filename="recipes", delimiter=":")
+.input Needs(filename="recipes", delimiter=" <- ")
 
 .decl IsRecipe(x : Recipe)
 IsRecipe(x) :- Needs(x, _).
@@ -34,7 +34,7 @@ Enables(ingredient, drink) :-
 .
 
 .output Mixable(filename="mixable", delimiter=":")
-.output Enables(filename="shopping-list", delimiter=":")
+.output Enables(filename="shopping-list", delimiter=" -> ")
 
 Begets("lime", "lime cordial") :- Has("sugar").
 Begets("sugar", "lime cordial") :- Has("lime").
