@@ -1,6 +1,6 @@
 # mixologic
 
-Pronounce it with the stress on the second syllable, like "mixology." Don't pronounce it like "mix-o-logic." That sounds awful.
+Pronounce it with the stress on the second syllable, like "mixologist." Don't pronounce it like "mix-o-logic." That sounds awful.
 
 This is the code accompanying an as-yet-unpublished blog post. That I haven't even finished writing yet. So you're really snooping around, huh?
 
