@@ -14,7 +14,7 @@ for file in *-cocktail-recipe; do
     -e 's/^-[0-9] *//' \
     -e 's/ *to (fill|top)//' \
     -e 's/,? *for (muddling|rim(ming the glass)?)//' \
-    -e 's/^(dash(es)?|pinch|slices|droplets|barspoon|(splash|sprigs) of|fill( with)?) *//' \
+    -e 's/^(dash(es)?|pinch|slices|droplets|barspoon|(splash|sprigs|sprinkle) of|fill( with)?) *//' \
     -e 's/^five-inch slice of *//' \
     -e 's/^inch thick disk of lime peel with some flesh attached$/lime peel/' \
     -e 's/^(long|(very )?cold|chilled|fresh|hot|large) *//' \
@@ -30,11 +30,12 @@ for file in *-cocktail-recipe; do
     -e 's/amaro nonino or similar/amaro nonino or sweet amaro/' \
     -e 's/amaro averna or similar sweet amaro/amaro averna or sweet amaro/' \
     -e 's/^egg$/whole egg/' \
+    -e 's/^mint leaves$/mint/' \
     -e 's/1:1 simple syrup/simple syrup/' \
     -e 's/^angostura$/angostura bitters/' \
+    -e 's/^negus mix$/oloroso sherry\ncognac\nlemon juice\nvanilla syrup\nsugar\nlemon zest\nnutmeg/' \
     -e '/gar?nish/d' \
     -e '/^water$/d' \
     -e '/^crushed ice$/d' \
-    -e '/^negus mix$/d' \
   | xargs -n1 -d'\n' printf '%s <- %s\n' "$name"
 done

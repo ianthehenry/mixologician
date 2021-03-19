@@ -88,9 +88,9 @@ Now we can mix a martini, and there are no further things that we could buy.
 Now let's make sure "subtyping" works.
 
   $ empty_bar
-  $ add_recipe margarita tequila "lime juice" "triple sec"
+  $ add_recipe margarita tequila "lime juice" "orange liqueur"
   $ buy "lime juice"
-  $ buy "triple sec"
+  $ buy "orange liqueur"
   $ runtest
   Mixable
   
@@ -110,7 +110,7 @@ tequila, we'll be able to.
   Enables
 
 Since we bought reposado tequila, there's no longer any reason to buy blanco
-tequila (according to our recipe book).
+tequila (at least according to our recipe book), so it goes away.
 
 Now let's test multi-ingredient syrups.
 
@@ -119,8 +119,8 @@ Now let's test multi-ingredient syrups.
   $ buy gin
   $ buy "lime juice"
 
-In order to make lime cordial, I need both limes and sugar. My lime juice won't
-do, because I need the lime zest. That's two new ingredients, so neither will
+In order to make lime cordial, I need both limes and sugar. My lime *juice*
+won't do, because I need the zest. That's two new ingredients, so neither will
 show up on my shopping list.
 
   $ runtest
@@ -171,6 +171,3 @@ of that ingredient:
   lime -> sour limes
 
 And this did detect the bug! But now I've fixed it, and everything is fine.
-
-Alright. I think that's good for now.
-

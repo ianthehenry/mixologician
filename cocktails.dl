@@ -43,5 +43,20 @@ Enables(ingredient, drink) :-
 Begets("lime", "lime cordial") :- Has("sugar").
 Begets("sugar", "lime cordial") :- Has("lime").
 
+Begets("sugar", "raspberry syrup") :- Has("raspberry").
+Begets("raspberry", "raspberry syrup") :- Has("sugar").
+
+Begets("pineapple", "pineapple syrup") :- Has("sugar").
+Begets("sugar", "pineapple syrup") :- Has("pineapple").
+
+Begets("ginger", "ginger syrup") :- Has("sugar").
+Begets("sugar", "ginger syrup") :- Has("ginger").
+
+Begets("sage", "sage syrup") :- Has("sugar").
+Begets("sugar", "sage syrup") :- Has("sage").
+
+Begets("cinnamon sticks", "cinnamon syrup") :- Has("sugar").
+Begets("sugar", "cinnamon syrup") :- Has("cinnamon sticks").
+
 .output Mixable(filename="mixable", delimiter=":")
 .output Enables(filename="shopping-list", delimiter=" -> ")

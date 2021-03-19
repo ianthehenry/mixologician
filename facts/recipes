@@ -143,7 +143,7 @@ champagne-cocktail <- champagne
 champagne-cocktail <- sugar cube
 champagne-cocktail <- angostura bitters
 champagne-cocktail <- brandy
-champagne-julep <- mint leaves
+champagne-julep <- mint
 champagne-julep <- simple syrup
 champagne-julep <- brandy
 champagne-julep <- champagne
@@ -508,7 +508,13 @@ naked-famous <- lime juice
 negroni <- london dry gin
 negroni <- campari
 negroni <- sweet vermouth
-negus-punch <- 
+negus-punch <- oloroso sherry
+negus-punch <- cognac
+negus-punch <- lemon juice
+negus-punch <- vanilla syrup
+negus-punch <- sugar
+negus-punch <- lemon zest
+negus-punch <- nutmeg
 nicholas-sage <- blanco tequila
 nicholas-sage <- lime juice
 nicholas-sage <- sage syrup
@@ -611,7 +617,7 @@ puerto-rican-racer <- peychaud's bitters
 queens-park-swizzle <- dark rum
 queens-park-swizzle <- lime juice
 queens-park-swizzle <- simple syrup
-queens-park-swizzle <- mint leaves
+queens-park-swizzle <- mint
 queens-park-swizzle <- angostura bitters
 queens-park-swizzle <- peychaud's bitters
 ramos-gin-fizz <- london dry gin or new american gin
@@ -717,7 +723,7 @@ soul-clench <- falernum
 southside <- london dry gin
 southside <- lemon juice
 southside <- simple syrup
-southside <- mint leaves
+southside <- mint
 spanish-coffee <- navy-strength gold rum
 spanish-coffee <- coffee liqueur
 spanish-coffee <- orange liqueur
@@ -728,7 +734,7 @@ spruce-goose <- new american gin
 spruce-goose <- honey syrup
 spruce-goose <- lime juice
 spruce-goose <- angostura bitters
-spruce-goose <- sprinkle of salt
+spruce-goose <- salt
 star <- apple brandy
 star <- sweet vermouth
 star <- simple syrup
