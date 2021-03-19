@@ -3,7 +3,7 @@ Set up some helpers that we'll use.
   $ function runtest {
   >   # souffle's output is a little noisy; do some light post-processing
   >   # to make the tests easier to read
-  >   souffle "$TESTDIR"/cocktails.dl -D- \
+  >   souffle "$TESTDIR"/mixologic.dl -D- \
   >   | sed -Ene '/^-+/{z;1!p;n;p;n;d}' -e '/^=+$/d' -e p
   > }
   $ function empty_bar { cat /dev/null >bar; }
