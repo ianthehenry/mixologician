@@ -63,25 +63,18 @@ Well that'll make things a bit more interesting. I'll be back in a bit.
 
 # dependencies
 
-- Install `nix`
+- [Install Nix](https://nixos.org/guides/install-nix.html)
 - Run `nix-shell`
 
-# how do i run it
+# let me try
 
 From within `nix-shell`:
 
-    $ souffle mixologic.dl -F facts
+    $ souffle mixologic.dl -F facts -D results
 
-That will create two files, `mixable` and `shopping-list`. `mixable` are all the recipes you have the ingredients to make. `shopping-list` tells you what you should buy to be able to make new recipes.
+That will create two files, `results/mixable` and `results/shopping-list`. The recipes in `mixable` are all the drinks you have the ingredients to make. `shopping-list` lists ingredients that will allow you to make new drinks.
 
-You can also run it like this:
-
-    $ mkdir results
-    $ souffle mixologic.dl -D results -F facts
-
-If you prefer to avoid making a mess of the current directory.
-
-That's what I do. But you can't check empty directories into `git` so that's not the default.
+`shopping-list` only looks for recipes that you are *one ingredient* away from being able to make. So you might not get results, if you have a very sparse (or very comprehensive) bar. You might need to buy two new things to be able to make a new drink, and it won't tell you that.
 
 # what else can i do
 
