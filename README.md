@@ -10,13 +10,13 @@ Given the contents of my bar:
 
 ```shell-session
 $ cat facts/bar
-cognac
-cointreau
+brandy
 dry vermouth
 gin
 lemon
 light rum
 lime
+orange liqueur
 reposado tequila
 sugar
 ```
@@ -25,15 +25,15 @@ And my cocktail recipe book:
 
 ```shell-session
 $ head facts/recipes
-margarita <- blanco tequila or reposado tequila
-margarita <- lime juice
-margarita <- orange liqueur
-margarita <- lime wedge
 martini <- london dry gin
 martini <- dry vermouth
 daiquiri <- light rum
 daiquiri <- lime juice
 daiquiri <- simple syrup
+margarita <- blanco tequila or reposado tequila
+margarita <- lime juice
+margarita <- orange liqueur
+margarita <- lime wedge
 ...
 ```
 
@@ -41,7 +41,6 @@ What cocktails can I mix?
 
 ```shell-session
 $ cat results/mixable
-between-the-sheets
 daiquiri
 margarita
 sidecar
@@ -54,7 +53,7 @@ $ cat results/shopping-list
 london dry gin -> gimlet
 london dry gin -> martini
 champagne -> airmail
-angostura bitters -> alabazam
+cognac -> between-the-sheets
 sherry -> sherry-cobbler
 rhum agricole -> ti-punch
 ```
