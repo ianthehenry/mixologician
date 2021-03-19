@@ -10,58 +10,56 @@ Given the contents of my bar:
 
 ```shell-session
 $ cat facts/bar
-lime
-sugar
-lemon
-reposado tequila
+cognac
 cointreau
 dry vermouth
 gin
-cynar
+lemon
+light rum
+lime
+reposado tequila
+sugar
 ```
 
 And my cocktail recipe book:
 
 ```shell-session
 $ head facts/recipes
-18th-century <- batavia arrack
-18th-century <- creme de cacao
-18th-century <- sweet vermouth
-18th-century <- lime juice
-20th-century <- london dry gin
-20th-century <- creme de cacao
-20th-century <- lillet or cocchi americano
-20th-century <- lemon juice
-212 <- reposado tequila
-212 <- aperol
+margarita <- blanco tequila or reposado tequila
+margarita <- lime juice
+margarita <- orange liqueur
+margarita <- lime wedge
+martini <- london dry gin
+martini <- dry vermouth
+daiquiri <- light rum
+daiquiri <- lime juice
+daiquiri <- simple syrup
+...
 ```
 
 What cocktails can I mix?
 
 ```shell-session
 $ cat results/mixable
-cynar-flip
+between-the-sheets
+daiquiri
 margarita
+sidecar
 ```
 
-Gosh, that's not very many drinks. What should I add to my bar to expand my options?
+Gosh, that's not very many. What could I add to my bar to expand my options?
 
 ```shell-session
 $ cat results/shopping-list
 london dry gin -> gimlet
 london dry gin -> martini
-light rum -> daiquiri
-cognac -> sidecar
-bourbon -> gold-rush
-bourbon -> whiskey-sour
-brandy -> sidecar
+champagne -> airmail
+angostura bitters -> alabazam
 sherry -> sherry-cobbler
-old tom gin -> bees-knees
-gold rum -> rum-flip
 rhum agricole -> ti-punch
 ```
 
-Aha. I'll be back in a bit.
+Well that'll make things a bit more interesting. I'll be back in a bit.
 
 # dependencies
 
