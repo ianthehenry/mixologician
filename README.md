@@ -88,7 +88,7 @@ Customize your recipe book by editing [`facts/recipes`](facts/recipes). If you c
 
 You can also change the generation rules in [`facts/begets`](facts/begets), or filter things out of your `shopping-list` by adding them to [`facts/unbuyable`](facts/unbuyable). You can add new two-ingredient combinations by editing [`facts/combinations`](facts/combinations). If you have a combination that requires more than two ingredients, it wouldn't be hard to extend the logic with a new relation.
 
-# it seems hard to write down everything i have
+# it seems hard to write down everything in my bar
 
 Yeah. I recommend starting with the universe of all possible ingredients, by running [`./list-ingredients`](list-ingredients), and just removing anything you don't have. It's easier than typing everything up, and you can be sure that you're using the right name for everything.
 
@@ -102,4 +102,4 @@ From within `nix-shell`:
 
     $ cram test.t --shell=$SHELL -i
 
-The output order of a soufflé relations seems to be pretty hard to predict, so don't be alarmed if tests fail because of re-ordered output. Just accept the diff and move on.
+The output order of soufflé relations seems to be pretty hard to predict, so don't be alarmed if tests appear to fail because of re-ordered output. Just accept the diff and move on.
