@@ -34,17 +34,21 @@ Set up some helpers that we'll use.
   >   done
   > }
 
-Now set up some basic rules...
+Now let's create some empty files that need to exist but that aren't relevant
+to us.
 
   $ cat /dev/null >auto-begets
   $ cat /dev/null >auto-unbuyable
   $ cat /dev/null >unbuyable
+
+And set up some basic rules:
+
   $ echo "lime -> lime juice" >begets
   $ echo "reposado tequila -> tequila" >>begets
   $ echo "blanco tequila -> tequila" >>begets
 
-Let's try the simplest thing we can: nothing in our bar; one trivial recipe in
-our book.
+Let's start with the simplest thing we can: nothing in our bar, one trivial
+recipe in our book.
 
   $ empty_bar
   $ add_recipe "shot of vodka" vodka
@@ -54,7 +58,7 @@ our book.
   Enables
   vodka -> shot of vodka
 
-Okay! Nothing is mixable, but if we learn that if we buy vodka we can mix up a
+Okay! Nothing is mixable, but we learn that if we buy vodka we can mix up a
 delicious shot:
 
   $ buy vodka
@@ -171,3 +175,37 @@ of that ingredient:
   lime -> sour limes
 
 And this did detect the bug! But now I've fixed it, and everything is fine.
+
+Now let's make sure that the "unbuyable" list is filtering things out correctly.
+
+  $ empty_recipe_book
+  $ add_recipe gimlet gin "lime juice" "lime cordial"
+  $ buy "lime" "gin"
+  $ runtest
+  Mixable
+  
+  Enables
+  lime cordial -> gimlet
+  sugar -> gimlet
+
+Okay, but I can't find lime cordial in a store, so that line is kind of just
+noise to me.
+
+  $ echo "lime cordial" >> unbuyable
+  $ runtest
+  Mixable
+  
+  Enables
+  sugar -> gimlet
+
+There we go. But just because I can't usually buy it doesn't mean I can't use
+it to mix the drink, if I happen to have some on hand:
+
+  $ buy "lime cordial"
+  $ runtest
+  Mixable
+  gimlet
+  
+  Enables
+
+The "Unbuyable" relation only affects output of the "Enables" relation.
