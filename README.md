@@ -4,7 +4,7 @@ Pronounce it with the stress on the second syllable, like "mixology." Don't pron
 
 This is the code accompanying an as-yet-unpublished blog post. That I haven't even finished writing yet. So you're really snooping around, huh?
 
-# just tell me
+# show me
 
 Given the contents of my bar:
 
