@@ -6,8 +6,8 @@ Set up some helpers that we'll use.
   >   souffle "$TESTDIR"/mixologic.dl -D- \
   >   | sed -Ene '/^-+/{z;1!p;n;p;n;d}' -e '/^=+$/d' -e p
   > }
-  $ function empty_bar { cat /dev/null >bar; }
-  $ function empty_recipe_book { cat /dev/null >recipes; }
+  $ function empty_bar { cat /dev/null > bar; }
+  $ function empty_recipe_book { cat /dev/null > recipes; }
   $ function buy {
   >   for ingredient in "$@"; do
   >     echo "$ingredient" >> bar;
@@ -22,7 +22,7 @@ Set up some helpers that we'll use.
   >   done
   >   # the eval is necessary to interpret the quotes correctly... look
   >   # no one is more upset about this than i am
-  >   eval "$filter" bar >new_bar
+  >   eval "$filter" bar > new_bar
   >   mv new_bar bar
   > }
   $ function set_bar { empty_bar; buy "$@"; }
@@ -30,23 +30,24 @@ Set up some helpers that we'll use.
   >   drink=$1
   >   shift
   >   for ingredient in "$@"; do
-  >     echo "$drink <- $ingredient" >>recipes
+  >     echo "$drink <- $ingredient" >> recipes
   >   done
   > }
 
 Now let's create some empty files that need to exist but that aren't relevant
 to us.
 
-  $ cat /dev/null >auto-begets
-  $ cat /dev/null >auto-unbuyable
+  $ cat /dev/null > auto-begets
+  $ cat /dev/null > auto-unbuyable
 
 And set up some basic rules:
 
-  $ echo "lime zest" >unbuyable
-  $ echo "lime -> lime juice" >begets
-  $ echo "lime -> lime zest" >>begets
-  $ echo "reposado tequila -> tequila" >>begets
-  $ echo "blanco tequila -> tequila" >>begets
+  $ echo "lime zest" > unbuyable
+  $ echo "lime -> lime juice" > begets
+  $ echo "lime -> lime zest" >> begets
+  $ echo "reposado tequila -> tequila" >> begets
+  $ echo "blanco tequila -> tequila" >> begets
+  $ echo "lime cordial, sugar, lime zest" > composites
 
 Let's start with the simplest thing we can: nothing in our bar, one trivial
 recipe in our book.
@@ -186,8 +187,8 @@ Now let's make sure that the "unbuyable" list is filtering things out correctly.
   Mixable
   
   Enables
-  sugar -> gimlet
   lime cordial -> gimlet
+  sugar -> gimlet
 
 Okay, but I can't find lime cordial in a store, so that line is kind of just
 noise to me.
