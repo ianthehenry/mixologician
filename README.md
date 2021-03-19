@@ -61,16 +61,25 @@ Well that'll make things a bit more interesting.
 
 No you're wrong it's smart. Take a closer look at that daiquiri: the recipe calls for lime juice, but we don't have lime juice in our bar. We only have lime. So why does it show up as mixable?
 
-Well, because it knows some rules. It knows that limes make lime juice (and lime wedge, and lime peel...). It even knows that lime plus sugar makes lime cordial -- so it knows that we're only one ingredient away from being able to make [a gimlet](https://www.tuxedono2.com/gimlet-cocktail-recipe), even though we don't *technically* have a single ingredient that the drink calls for.
+Well, because it knows some rules. It knows that limes make lime juice (and lime wedge, and lime zest...). It even knows that lime zest plus sugar makes lime cordial -- so it knows that we're only one ingredient away from being able to make a [Gimlet](https://www.tuxedono2.com/gimlet-cocktail-recipe), even though we don't *technically* have a single ingredient that the drink calls for.
 
 # dependencies
 
 - [Install Nix](https://nixos.org/guides/install-nix.html)
 - Run `nix-shell`
 
+*Or*:
+
+- [Install Soufflé](https://souffle-lang.github.io/install)
+
+And if you want to run the tests:
+
+- [Install Python](https://www.python.org/downloads/)
+- [Install `cram`](https://pypi.org/project/cram/)
+
 # let me try
 
-From within `nix-shell`:
+From within your `nix-shell`:
 
     $ souffle mixologician.dl -F facts -D results
 
@@ -88,9 +97,9 @@ Customize your recipe book by editing [`facts/recipes`](facts/recipes). If you c
 
 You can also change the generation rules in [`facts/begets`](facts/begets), or filter things out of your `shopping-list` by adding them to [`facts/unbuyable`](facts/unbuyable). You can add new two-ingredient combinations by editing [`facts/combinations`](facts/combinations). If you have a combination that requires more than two ingredients, it wouldn't be hard to extend the logic with a new relation.
 
-# it seems hard to write down everything in my bar
+# it seems hard to make a full inventory of my giant bar
 
-Yeah. I recommend starting with the universe of all possible ingredients, by running [`./list-ingredients`](list-ingredients), and just removing anything you don't have. It's easier than typing everything up, and you can be sure that you're using the right name for everything.
+Yeah. I recommend starting with the universe of all possible ingredients, by running [`./list-ingredients`](list-ingredients), and just removing anything that you don't have. It's easier than typing everything up, and you can be sure that you're using the same names for things that the recipes use.
 
 Of course you can use whatever names you want -- you can be as specific as you want -- and just add rules to [`facts/begets`](facts/begets) that make them compatible with your recipe book. Do you have Cointreau and Grand Marnier in your bar? Do you have recipes that distinguish between them? Add 'em in, and write that they both beget orange liqueur.
 
@@ -103,3 +112,9 @@ From within `nix-shell`:
     $ cram test.t --shell=$SHELL -i
 
 The output order of soufflé relations seems to be pretty hard to predict, so don't be alarmed if tests appear to fail because of re-ordered output. Just accept the diff and move on.
+
+# where did all those recipes come from
+
+I scraped them from [Tuxedo No. 2](https://tuxedono2.com), an excellent cocktail site that I highly recommend you explore.
+
+The recipes are named after the paths to the cocktails on that site, so if you want to learn more about a cocktail, just go to `https://tuxedono2.com/$name-cocktail-recipe` (and buy them a drink while you're at it).
