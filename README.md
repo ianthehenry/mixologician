@@ -34,6 +34,10 @@ Customize your recipe book by editing `facts/recipes`. If you change recipes, yo
 
 This overwrites the `facts/auto-*` files, so don't make changes to those.
 
+You can also change the generation rules in `facts/begets`, or filter things out of your shopping list by adding them to `facts/unbuyable`.
+
+If you have a complicated ingredient production rule, like a multi-ingredient syrup, you have to change `mixologic.dl`.
+
 # testing
 
 From within `nix-shell`:
