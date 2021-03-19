@@ -3,7 +3,7 @@ Set up some helpers that we'll use.
   $ function runtest {
   >   # souffle's output is a little noisy; do some light post-processing
   >   # to make the tests easier to read
-  >   souffle "$TESTDIR"/mixologic.dl -D- \
+  >   souffle "$TESTDIR"/mixologician.dl -D- \
   >   | sed -Ene '/^-+/{z;1!p;n;p;n;d}' -e '/^=+$/d' -e p
   > }
   $ function empty_bar { cat /dev/null > bar; }
@@ -47,7 +47,7 @@ And set up some basic rules:
   $ echo "lime -> lime zest" >> begets
   $ echo "reposado tequila -> tequila" >> begets
   $ echo "blanco tequila -> tequila" >> begets
-  $ echo "lime cordial, sugar, lime zest" > composites
+  $ echo "lime cordial, sugar, lime zest" > combination
 
 Let's start with the simplest thing we can: nothing in our bar, one trivial
 recipe in our book.

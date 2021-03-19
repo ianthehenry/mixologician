@@ -1,4 +1,4 @@
-# mixologic
+# mixologician
 
 Pronounce it with the stress on the second syllable, like "mixologist." Don't pronounce it like "mix-o-logic." That sounds awful.
 
@@ -74,7 +74,7 @@ Well, because it knows some rules. It knows that limes make lime juice (and lime
 
 From within `nix-shell`:
 
-    $ souffle mixologic.dl -F facts -D results
+    $ souffle mixologician.dl -F facts -D results
 
 That will create two files, `results/mixable` and `results/shopping-list`. The recipes in `mixable` are all the drinks you have the ingredients to make. `shopping-list` lists ingredients that will allow you to make new drinks.
 
@@ -84,19 +84,17 @@ That will create two files, `results/mixable` and `results/shopping-list`. The r
 
 Customize the contents of your bar by editing `facts/bar`.
 
-Customize your recipe book by editing `facts/recipes`. If you change recipes, you should probably re-run `./generate-auto-facts`. It's not strictly necessary, but it will make your output better.
+Customize your recipe book by editing [`facts/recipes`](facts/recipes). If you change recipes, you should probably re-run [`./generate-auto-facts`](generate-auto-facts). It's not strictly necessary, but it will make your output better.
 
 `./generate-auto-facts` will overwrite the `facts/auto-*` files, so you shouldn't make changes to those.
 
-You can also change the generation rules in `facts/begets`, or filter things out of your `shopping-list` by adding them to `facts/unbuyable`.
-
-If you have a complicated ingredient production rule, like a multi-ingredient syrup, you have to change `mixologic.dl`.
+You can also change the generation rules in [`facts/begets`](facts/begets), or filter things out of your `shopping-list` by adding them to [`facts/unbuyable`](facts/unbuyable). You can add new two-ingredient combinations by editing [`facts/combinations`](facts/combinations). If you have a combination that requires more than two ingredients, it wouldn't be hard to extend the logic with a new relation.
 
 # it seems hard to write down everything i have
 
-Yeah. I recommend starting with the universe of all possible ingredients, by running `./list-ingredients`, and just removing anything you don't have. It's easier than typing everything up, and you can be sure that you're using the right name for everything.
+Yeah. I recommend starting with the universe of all possible ingredients, by running [`./list-ingredients`](list-ingredients), and just removing anything you don't have. It's easier than typing everything up, and you can be sure that you're using the right name for everything.
 
-Of course you can use whatever names you want -- you can be as specific as you want -- and just add rules to `facts/begets` that make them compatible with your recipe book. Do you have Cointreau and Grand Marnier in your bar? Do you have recipes that distinguish between them? Add 'em in, and write that they both beget orange liqueur.
+Of course you can use whatever names you want -- you can be as specific as you want -- and just add rules to [`facts/begets`](facts/begets) that make them compatible with your recipe book. Do you have Cointreau and Grand Marnier in your bar? Do you have recipes that distinguish between them? Add 'em in, and write that they both beget orange liqueur.
 
 Remember that you don't need to worry about ingredients like lime juice or simple syrup -- you can just write that you have lime, or just write that you have sugar. Unless you bought one of those little green bottles of lime juice. Then you should just write lime juice. You get it. Be honest, in this most of all.
 
@@ -106,4 +104,4 @@ From within `nix-shell`:
 
     $ cram test.t --shell=$SHELL -i
 
-To run the tests.
+The output order of a soufflé relations seems to be pretty hard to predict, so don't be alarmed if tests fail because of re-ordered output. Just accept the diff and move on.

@@ -6,7 +6,7 @@ cd facts
 
 ( sed recipes -E -e 's/^.+<- //'
   sed begets -E -e 's/ -> .+$//'
-  sed composites -E -e 's/, /\n/g'
+  sed combinations -E -e 's/, /\n/g'
 ) \
 | grep -vFf <(cat {,auto-}unbuyable) \
 | sort -u
