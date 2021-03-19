@@ -29,8 +29,8 @@ IsIngredient(x) :- Composite(_, _, x).
 
 Begets(x, x) :- IsIngredient(x).
 
-Begets(x, result) :- Composite(result, first, second), Has(y), Begets(x, first), Begets(y, second).
-Begets(y, result) :- Composite(result, first, second), Has(x), Begets(x, first), Begets(y, second).
+Begets(x, result) :- Composite(result, first, second), Has(first), Begets(x, second).
+Begets(x, result) :- Composite(result, first, second), Has(second), Begets(x, first).
 
 Has(out) :- Has(in), Begets(in, out).
 
