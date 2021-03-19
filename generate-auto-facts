@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cd facts
+
+sed recipes -En -e 's/^.+<- //' -e '/ or /{ s/(.+) or (.+)/\1 -> \0\n\2 -> \0/; p }' >auto-begets
+sed recipes -En -e 's/^.+<- //' -e '/ or /p' >auto-unbuyable

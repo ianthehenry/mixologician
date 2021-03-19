@@ -13,7 +13,13 @@ IsRecipe(x) :- Needs(x, _).
 .decl IsIngredient(x : Ingredient)
 IsIngredient(x) :- Needs(_, x).
 
+.decl Unbuyable(x : Ingredient)
+.input Unbuyable(filename="unbuyable")
+.input Unbuyable(filename="auto-unbuyable")
+
 .decl Begets(in : Ingredient, out : Ingredient)
+.input Begets(filename="begets", delimiter=" -> ")
+.input Begets(filename="auto-begets", delimiter=" -> ")
 
 Begets(x, x) :- IsIngredient(x).
 
@@ -27,23 +33,15 @@ Mixable(drink) :- IsRecipe(drink), !Missing(drink, _).
 
 .decl Enables(missing : Ingredient, drink : Recipe)
 Enables(ingredient, drink) :-
+  !Unbuyable(ingredient),
   Missing(drink, out),
   Begets(ingredient, out),
   count : { Missing(drink, _) } =
   count : { Begets(ingredient, product), Missing(drink, product) }
 .
 
-.output Mixable(filename="mixable", delimiter=":")
-.output Enables(filename="shopping-list", delimiter=" -> ")
-
 Begets("lime", "lime cordial") :- Has("sugar").
 Begets("sugar", "lime cordial") :- Has("lime").
 
-Begets("lime", "lime juice").
-Begets("lemon", "lemon juice").
-Begets("honey", "honey syrup").
-
-Begets("reposado tequila", "tequila").
-Begets("blanco tequila", "tequila").
-Begets("cointreau", "triple sec").
-Begets("old tom gin", "gin").
+.output Mixable(filename="mixable", delimiter=":")
+.output Enables(filename="shopping-list", delimiter=" -> ")
