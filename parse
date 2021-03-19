@@ -17,7 +17,7 @@ for file in *-cocktail-recipe; do
     -e 's/^(dash(es)?|pinch|slices|droplets|barspoon|(splash|sprigs|sprinkle) of|fill( with)?) *//' \
     -e 's/^five-inch slice of *//' \
     -e 's/^inch thick disk of lime peel with some flesh attached$/lime peel/' \
-    -e 's/^(long|(very )?cold|chilled|fresh|hot|large) *//' \
+    -e 's/^(long|(very )?cold|chilled|fresh|hot|large|wet) *//' \
     -e 's/ , optional//' \
     -e 's/cherries/cherry/' \
     -e 's/pineapple chunk or frond/pineapple chunk or pineapple frond/' \
