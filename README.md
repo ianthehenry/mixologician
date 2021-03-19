@@ -68,7 +68,7 @@ Well, because it knows some rules. It knows that limes make lime juice (and lime
 - [Install Nix](https://nixos.org/guides/install-nix.html)
 - Run `nix-shell`
 
-*Or*:
+*Or:*
 
 - [Install Soufflé](https://souffle-lang.github.io/install)
 
