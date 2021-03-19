@@ -1,0 +1,36 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash -p pup
+
+set -euo pipefail
+
+cd tuxedono2
+
+for file in *-cocktail-recipe; do
+  name=${file%-cocktail-recipe}
+  pup -p -f "$file" '.recipe__recipe ul:first-of-type .ingredient text{}' \
+  | sed -nE -e '/^$/d' -e ':start /^$/!{ H; n; b start }' -e 'x; s/\n//g; s/^\s+//; p' \
+  | sed -E \
+    -e '/gar?nish/d' \
+    -e '/^water$/d' \
+    -e 's/^.*$/\L\0/' \
+    -e 's/^-[0-9] *//' \
+    -e 's/ *to (fill|top)//' \
+    -e 's/,? *for (muddling|rim(ming the glass)?)//' \
+    -e 's/^(dash(es)?|pinch|slices|droplets|barspoon|(splash|sprigs) of|fill( with)?) *//' \
+    -e 's/^five-inch slice of *//' \
+    -e 's/^inch thick disk of lime peel with some flesh attached$/lime peel/' \
+    -e 's/^(long|(very )?cold|fresh|hot|large) *//' \
+    -e 's/ , optional//' \
+    -e 's/cherries/cherry/' \
+    -e 's/cherries/peel/' \
+    -e 's/simple syrup, rich/2:1 simple syrup/' \
+    -e 's/ *\([^)]+\)//' \
+    -e 's/zest of [0-9]+ (.+)/\1 zest/' \
+    -e 's/1 sugar cube/sugar cube/' \
+    -e 's/china china amer/china-china amer/' \
+    -e 's/amaro nonino or similar/amaro nonino or sweet amaro/' \
+    -e 's/amaro averna or similar sweet amaro/amaro averna or sweet amaro/' \
+    -e 's/^egg$/whole egg/' \
+    -e 's/^angostura$/angostura bitters/' \
+  | xargs -n1 -d'\n' printf '%s <- %s\n' "$name"
+done
