@@ -12,7 +12,6 @@ Given the contents of my bar:
 $ cat facts/bar
 brandy
 dry vermouth
-gin
 lemon
 light rum
 lime
