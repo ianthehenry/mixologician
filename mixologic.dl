@@ -58,5 +58,5 @@ Begets("sugar", "sage syrup") :- Has("sage").
 Begets("cinnamon sticks", "cinnamon syrup") :- Has("sugar").
 Begets("sugar", "cinnamon syrup") :- Has("cinnamon sticks").
 
-.output Mixable(filename="mixable", delimiter=":")
+.output Mixable(filename="mixable")
 .output Enables(filename="shopping-list", delimiter=" -> ")
