@@ -29,10 +29,10 @@ IsIngredient(x) :- Composite(_, _, x).
 
 Begets(x, x) :- IsIngredient(x).
 
+Has(out) :- Has(in), Begets(in, out).
+
 Begets(x, result) :- Composite(result, first, second), Has(first), Begets(x, second).
 Begets(x, result) :- Composite(result, first, second), Has(second), Begets(x, first).
-
-Has(out) :- Has(in), Begets(in, out).
 
 .decl Missing(drink : Recipe, ingredient : Ingredient)
 Missing(drink, ingredient) :- Needs(drink, ingredient), !Has(ingredient).
