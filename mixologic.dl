@@ -40,23 +40,34 @@ Enables(ingredient, drink) :-
   count : { Begets(ingredient, product), Missing(drink, product) }
 .
 
-Begets("lime", "lime cordial") :- Has("sugar").
-Begets("sugar", "lime cordial") :- Has("lime").
+// anything that appears in these rules may *only* appear in these rules,
+// and thus might not Beget itself otherwise. To be safe, explicitly enumerate
+// them. I *think* we can just load this from a file, though.
+Begets("sugar", "sugar").
 
-Begets("sugar", "raspberry syrup") :- Has("raspberry").
-Begets("raspberry", "raspberry syrup") :- Has("sugar").
+Begets("lime zest", "lime zest").
+Begets(flavor, "lime cordial") :- Has(sugar), Begets(sugar, "sugar"), Begets(flavor, "lime zest").
+Begets(sugar, "lime cordial") :- Has(flavor), Begets(sugar, "sugar"), Begets(flavor, "lime zest").
 
-Begets("pineapple", "pineapple syrup") :- Has("sugar").
-Begets("sugar", "pineapple syrup") :- Has("pineapple").
+Begets("raspberry", "raspberry").
+Begets(flavor, "raspberry syrup") :- Has(sugar), Begets(sugar, "sugar"), Begets(flavor, "raspberry").
+Begets(sugar, "raspberry syrup") :- Has(flavor), Begets(sugar, "sugar"), Begets(flavor, "raspberry").
 
-Begets("ginger", "ginger syrup") :- Has("sugar").
-Begets("sugar", "ginger syrup") :- Has("ginger").
+Begets("pineapple", "pineapple").
+Begets(flavor, "pineapple syrup") :- Has(sugar), Begets(sugar, "sugar"), Begets(flavor, "pineapple").
+Begets(sugar, "pineapple syrup") :- Has(flavor), Begets(sugar, "sugar"), Begets(flavor, "pineapple").
 
-Begets("sage", "sage syrup") :- Has("sugar").
-Begets("sugar", "sage syrup") :- Has("sage").
+Begets("ginger", "ginger").
+Begets(flavor, "ginger syrup") :- Has(sugar), Begets(sugar, "sugar"), Begets(flavor, "ginger").
+Begets(sugar, "ginger syrup") :- Has(flavor), Begets(sugar, "sugar"), Begets(flavor, "ginger").
 
-Begets("cinnamon sticks", "cinnamon syrup") :- Has("sugar").
-Begets("sugar", "cinnamon syrup") :- Has("cinnamon sticks").
+Begets("sage", "sage").
+Begets(flavor, "sage syrup") :- Has(sugar), Begets(sugar, "sugar"), Begets(flavor, "sage").
+Begets(sugar, "sage syrup") :- Has(flavor), Begets(sugar, "sugar"), Begets(flavor, "sage").
+
+Begets("cinnamon sticks", "cinnamon sticks").
+Begets(flavor, "cinnamon syrup") :- Has(sugar), Begets(sugar, "sugar"), Begets(flavor, "cinnamon sticks").
+Begets(sugar, "cinnamon syrup") :- Has(flavor), Begets(sugar, "sugar"), Begets(flavor, "cinnamon sticks").
 
 .output Mixable(filename="mixable")
 .output Enables(filename="shopping-list", delimiter=" -> ")

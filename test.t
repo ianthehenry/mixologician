@@ -39,11 +39,12 @@ to us.
 
   $ cat /dev/null >auto-begets
   $ cat /dev/null >auto-unbuyable
-  $ cat /dev/null >unbuyable
 
 And set up some basic rules:
 
+  $ echo "lime zest" >unbuyable
   $ echo "lime -> lime juice" >begets
+  $ echo "lime -> lime zest" >>begets
   $ echo "reposado tequila -> tequila" >>begets
   $ echo "blanco tequila -> tequila" >>begets
 
@@ -143,8 +144,8 @@ But once I buy sugar...
   Mixable
   
   Enables
-  lime -> gimlet
   lime cordial -> gimlet
+  lime -> gimlet
 
 It lets me know that I could either buy lime cordial directly, or I could just
 buy limes.
@@ -185,8 +186,8 @@ Now let's make sure that the "unbuyable" list is filtering things out correctly.
   Mixable
   
   Enables
-  lime cordial -> gimlet
   sugar -> gimlet
+  lime cordial -> gimlet
 
 Okay, but I can't find lime cordial in a store, so that line is kind of just
 noise to me.
