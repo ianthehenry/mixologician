@@ -94,9 +94,11 @@ If you have a complicated ingredient production rule, like a multi-ingredient sy
 
 # it seems hard to write down everything i have
 
-Yeah. I recommend starting with the universe of all possible ingredients, by running `./list-ingredients`, and just removing anything you don't have.
+Yeah. I recommend starting with the universe of all possible ingredients, by running `./list-ingredients`, and just removing anything you don't have. It's easier than typing up every single thing, and you can be sure that you're using the right names for things.
 
-You don't need to worry about ingredients like simple syrup or lime juice -- you can just write that you have lime, or just write that you have sugar. Unless you bought one of those little green bottles of lime juice. Then you should just write lime juice. You get it. Be honest, in this most of all.
+Of course you can use whatever names you want -- you can be as specific as you want -- and just add rules to `facts/begets` that make them compatible with your recipe book. Do you have Cointreau and Grand Marnier in your bar? Do you have recipes that distinguish between them? Add 'em in, and write that they both beget orange liqueur.
+
+Remember that you don't need to worry about ingredients like lime juice or simple syrup -- you can just write that you have lime, or just write that you have sugar. Unless you bought one of those little green bottles of lime juice. Then you should just write lime juice. You get it. Be honest, in this most of all.
 
 # testing
 
