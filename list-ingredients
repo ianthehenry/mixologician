@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
-cd facts
-
-sed recipes -E -e 's/^.+<- //' | sort -u
+( sed facts/recipes -E -e 's/^.+<- //'
+  sed facts/begets -E -e 's/ -> .+$//'
+  sed mixologic.dl -En -e 's/^Begets\("([^"]+).+\.$/\1/; T; p'
+) \
+| grep -vFf <(cat facts/auto-unbuyable facts/unbuyable) \
+| sort -u

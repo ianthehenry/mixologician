@@ -57,7 +57,13 @@ sherry -> sherry-cobbler
 rhum agricole -> ti-punch
 ```
 
-Well that'll make things a bit more interesting. I'll be back in a bit.
+Well that'll make things a bit more interesting.
+
+# this seems dumb
+
+No you're wrong it's smart. Take a closer look at that daiquiri: the recipe calls for lime juice, but we don't have lime juice in our bar. We only have lime. So why does it show up as mixable?
+
+Well, because it knows some rules. It knows that limes make lime juice (and lime wedge, and lime peel...). It even knows that lime plus sugar makes lime cordial -- so it knows that we're only one ingredient away from being able to make [a gimlet](https://www.tuxedono2.com/gimlet-cocktail-recipe), even though we don't *technically* have a single ingredient that the drink calls for.
 
 # dependencies
 
@@ -80,11 +86,17 @@ Customize the contents of your bar by editing `facts/bar`.
 
 Customize your recipe book by editing `facts/recipes`. If you change recipes, you should probably re-run `./generate-auto-facts`. It's not strictly necessary, but it will make your output better.
 
-This overwrites the `facts/auto-*` files, so don't make changes to those.
+`./generate-auto-facts` will overwrite the `facts/auto-*` files, so you shouldn't make changes to those.
 
-You can also change the generation rules in `facts/begets`, or filter things out of your shopping list by adding them to `facts/unbuyable`.
+You can also change the generation rules in `facts/begets`, or filter things out of your `shopping-list` by adding them to `facts/unbuyable`.
 
 If you have a complicated ingredient production rule, like a multi-ingredient syrup, you have to change `mixologic.dl`.
+
+# it seems hard to write down everything i have
+
+Yeah. I recommend starting with the universe of all possible ingredients, by running `./list-ingredients`, and just removing anything you don't have.
+
+You don't need to worry about ingredients like simple syrup or lime juice -- you can just write that you have lime, or just write that you have sugar. Unless you bought one of those little green bottles of lime juice. Then you should just write lime juice. You get it. Be honest, in this most of all.
 
 # testing
 
