@@ -63,6 +63,10 @@ No you're wrong it's smart. Take a closer look at that daiquiri: the recipe call
 
 Well, because it knows some rules. It knows that limes make lime juice (and lime wedge, and lime zest...). It even knows that lime zest plus sugar makes lime cordial -- so it knows that we're only one ingredient away from being able to make a [Gimlet](https://www.tuxedono2.com/gimlet-cocktail-recipe), even though we don't *technically* have a single ingredient that the drink calls for.
 
+# cool
+
+It *is* cool. And you can read all about how it works, once I publish the post.
+
 # dependencies
 
 - [Install Nix](https://nixos.org/guides/install-nix.html)
@@ -75,7 +79,7 @@ Well, because it knows some rules. It knows that limes make lime juice (and lime
 And if you want to run the tests:
 
 - [Install Python](https://www.python.org/downloads/)
-- [Install `cram`](https://pypi.org/project/cram/)
+- [Install Cram](https://pypi.org/project/cram/)
 
 # let me try
 
