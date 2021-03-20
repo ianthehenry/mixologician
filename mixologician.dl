@@ -7,6 +7,10 @@
 .decl Needs(drink : Recipe, ingredient : Ingredient)
 .input Needs(filename="recipes", delimiter=" <- ")
 
+.decl Begets(in : Ingredient, out : Ingredient)
+.input Begets(filename="begets", delimiter=" -> ")
+.input Begets(filename="auto-begets", delimiter=" -> ")
+
 .decl Composite(result : Ingredient, first : Ingredient, second : Ingredient)
 .input Composite(filename="combinations", delimiter=", ")
 
@@ -15,6 +19,8 @@ IsRecipe(x) :- Needs(x, _).
 
 .decl IsIngredient(x : Ingredient)
 IsIngredient(x) :- Needs(_, x).
+IsIngredient(x) :- Begets(x, _).
+IsIngredient(x) :- Begets(_, x).
 IsIngredient(x) :- Composite(x, _, _).
 IsIngredient(x) :- Composite(_, x, _).
 IsIngredient(x) :- Composite(_, _, x).
@@ -22,10 +28,6 @@ IsIngredient(x) :- Composite(_, _, x).
 .decl Unbuyable(x : Ingredient)
 .input Unbuyable(filename="unbuyable")
 .input Unbuyable(filename="auto-unbuyable")
-
-.decl Begets(in : Ingredient, out : Ingredient)
-.input Begets(filename="begets", delimiter=" -> ")
-.input Begets(filename="auto-begets", delimiter=" -> ")
 
 Begets(x, x) :- IsIngredient(x).
 Begets(x, z) :- Begets(x, y), Begets(y, z).
