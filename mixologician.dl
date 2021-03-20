@@ -8,7 +8,7 @@
 .input Needs(filename="recipes", delimiter=" <- ")
 
 .decl Composite(result : Ingredient, first : Ingredient, second : Ingredient)
-.input Composite(filename="combination", delimiter=", ")
+.input Composite(filename="combinations", delimiter=", ")
 
 .decl IsRecipe(x : Recipe)
 IsRecipe(x) :- Needs(x, _).
