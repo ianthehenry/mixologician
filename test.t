@@ -47,7 +47,7 @@ And set up some basic rules:
   $ echo "lime -> lime zest" >> begets
   $ echo "reposado tequila -> tequila" >> begets
   $ echo "blanco tequila -> tequila" >> begets
-  $ echo "lime cordial, sugar, lime zest" > combination
+  $ echo "lime cordial, sugar, lime zest" > combinations
 
 Let's start with the simplest thing we can: nothing in our bar, one trivial
 recipe in our book.
