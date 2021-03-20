@@ -1,3 +1,10 @@
-*.t linguist-documentation
+# i know but github doesn't have datalog and this gives the best syntax
+# highlighting
 *.dl linguist-language=Prolog
-parse linguist-language=Shell
+
+# no they aren't really i just don't github to say that "shell" is the most
+# used language
+*.t linguist-documentation
+list-ingredients linguist-documentation
+generate-auto-facts linguist-documentation
+parse linguist-documentation
