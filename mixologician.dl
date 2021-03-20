@@ -28,6 +28,7 @@ IsIngredient(x) :- Composite(_, _, x).
 .input Begets(filename="auto-begets", delimiter=" -> ")
 
 Begets(x, x) :- IsIngredient(x).
+Begets(x, z) :- Begets(x, y), Begets(y, z).
 
 Has(out) :- Has(in), Begets(in, out).
 

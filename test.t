@@ -178,6 +178,26 @@ of that ingredient:
 
 And this did detect the bug! But now I've fixed it, and everything is fine.
 
+But I think I might have another bug. Does the Has relation work through
+arbitrarily long Begets production chains?
+
+  $ empty_bar
+  $ empty_recipe_book
+  $ echo 'really really specific scotch -> specific scotch' >>begets
+  $ echo 'really specific scotch -> specific scotch' >>begets
+  $ echo 'specific scotch -> scotch' >>begets
+  $ add_recipe "shot of scotch" scotch
+  $ runtest
+  Mixable
+  
+  Enables
+  scotch -> shot of scotch
+  really really specific scotch -> shot of scotch
+  specific scotch -> shot of scotch
+  really specific scotch -> shot of scotch
+
+It didn't, the first time I tried this. But now I've fixed it.
+
 Now let's make sure that the "unbuyable" list is filtering things out correctly.
 
   $ empty_recipe_book
