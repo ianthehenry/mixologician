@@ -85,7 +85,7 @@ Okay. Since we already have vodka, all we need is dry vermouth. Let's buy it:
   $ runtest
   mixable: vodka martini
 
-Now we can mix a martini, and there are no further things that we could buy.
+Now we can mix a martini, and there are no further things that we should buy.
 
 Now let's make sure "subtyping" works.
 
