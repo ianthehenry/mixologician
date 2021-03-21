@@ -115,8 +115,6 @@ From within `nix-shell`:
 
     $ cram test.t --shell=$SHELL -i
 
-The output order of soufflé relations seems to be pretty hard to predict, so don't be alarmed if tests appear to fail because of re-ordered output. Just accept the diff and move on.
-
 # where did all those recipes come from
 
 I scraped them from [Tuxedo No. 2](https://tuxedono2.com), an excellent cocktail site that I highly recommend you explore.

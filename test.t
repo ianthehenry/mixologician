@@ -5,11 +5,11 @@ Set up some helpers that we'll use.
   >   # to make the tests easier to read
   >   souffle "$TESTDIR"/mixologician.dl
   >   if [[ -s mixable ]]; then
-  >     echo 'mixable:' $(cat mixable)
+  >     echo 'mixable:' $(sort mixable)
   >   fi
   >   if [[ -s shopping-list ]]; then
   >     echo "shopping list:"
-  >     cat shopping-list
+  >     sort shopping-list
   >   fi
   > }
   $ function empty_bar { cat /dev/null > bar; }
