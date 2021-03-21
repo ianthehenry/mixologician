@@ -3,8 +3,14 @@ Set up some helpers that we'll use.
   $ function runtest {
   >   # souffle's output is a little noisy; do some light post-processing
   >   # to make the tests easier to read
-  >   souffle "$TESTDIR"/mixologician.dl -D- \
-  >   | sed -Ene '/^-+/{z;1!p;n;p;n;d}' -e '/^=+$/d' -e p
+  >   souffle "$TESTDIR"/mixologician.dl
+  >   if [[ -s mixable ]]; then
+  >     echo 'mixable:' $(cat mixable)
+  >   fi
+  >   if [[ -s shopping-list ]]; then
+  >     echo "shopping list:"
+  >     cat shopping-list
+  >   fi
   > }
   $ function empty_bar { cat /dev/null > bar; }
   $ function empty_recipe_book { cat /dev/null > recipes; }
@@ -55,9 +61,7 @@ recipe in our book.
   $ empty_bar
   $ add_recipe "shot of vodka" vodka
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   vodka -> shot of vodka
 
 Okay! Nothing is mixable, but we learn that if we buy vodka we can mix up a
@@ -65,29 +69,21 @@ delicious shot:
 
   $ buy vodka
   $ runtest
-  Mixable
-  shot of vodka
-  
-  Enables
+  mixable: shot of vodka
 
 Great. Now let's try a real cocktail:
 
   $ empty_recipe_book
   $ add_recipe "vodka martini" vodka "dry vermouth"
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   dry vermouth -> vodka martini
 
 Okay. Since we already have vodka, all we need is dry vermouth. Let's buy it:
 
   $ buy "dry vermouth"
   $ runtest
-  Mixable
-  vodka martini
-  
-  Enables
+  mixable: vodka martini
 
 Now we can mix a martini, and there are no further things that we could buy.
 
@@ -98,9 +94,7 @@ Now let's make sure "subtyping" works.
   $ buy "lime juice"
   $ buy "orange liqueur"
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   tequila -> margarita
   reposado tequila -> margarita
   blanco tequila -> margarita
@@ -110,10 +104,7 @@ tequila, we'll be able to.
 
   $ buy "reposado tequila"
   $ runtest
-  Mixable
-  margarita
-  
-  Enables
+  mixable: margarita
 
 Since we bought reposado tequila, there's no longer any reason to buy blanco
 tequila (at least according to our recipe book), so it goes away.
@@ -130,9 +121,7 @@ won't do, because I need the zest. That's two new ingredients, so neither will
 show up on my shopping list.
 
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   lime cordial -> gimlet
 
 But it does tell me that I can just buy lime cordial directly (if, you know, I
@@ -142,9 +131,7 @@ But once I buy sugar...
 
   $ buy sugar
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   lime cordial -> gimlet
   lime -> gimlet
 
@@ -156,9 +143,7 @@ need to make a gimlet is lime.
 
   $ sell "lime juice"
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   lime -> gimlet
 
 Nice. Notice that I can no longer just buy lime cordial, as that won't be
@@ -171,9 +156,7 @@ of that ingredient:
   $ empty_bar
   $ add_recipe "sour limes" "lime" "lime juice"
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   lime -> sour limes
 
 And this did detect the bug! But now I've fixed it, and everything is fine.
@@ -188,9 +171,7 @@ arbitrarily long Begets production chains?
   $ echo 'specific scotch -> scotch' >>begets
   $ add_recipe "shot of scotch" scotch
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   scotch -> shot of scotch
   really really specific scotch -> shot of scotch
   specific scotch -> shot of scotch
@@ -204,9 +185,7 @@ Now let's make sure that the "unbuyable" list is filtering things out correctly.
   $ add_recipe gimlet gin "lime juice" "lime cordial"
   $ buy "lime" "gin"
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   lime cordial -> gimlet
   sugar -> gimlet
 
@@ -215,9 +194,7 @@ noise to me.
 
   $ echo "lime cordial" >> unbuyable
   $ runtest
-  Mixable
-  
-  Enables
+  shopping list:
   sugar -> gimlet
 
 There we go. But just because I can't usually buy it doesn't mean I can't use
@@ -225,9 +202,6 @@ it to mix the drink, if I happen to have some on hand:
 
   $ buy "lime cordial"
   $ runtest
-  Mixable
-  gimlet
-  
-  Enables
+  mixable: gimlet
 
 The "Unbuyable" relation only affects output of the "Enables" relation.

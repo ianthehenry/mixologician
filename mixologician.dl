@@ -43,6 +43,9 @@ Missing(drink, ingredient) :- Needs(drink, ingredient), !Has(ingredient).
 .decl Mixable(drink : Recipe)
 Mixable(drink) :- IsRecipe(drink), !Missing(drink, _).
 
+.decl MixableRecipe(drink : Recipe, ingredient : Ingredient)
+MixableRecipe(drink, recipe) :- Mixable(drink), Needs(drink, recipe).
+
 .decl Enables(missing : Ingredient, drink : Recipe)
 Enables(ingredient, drink) :-
   !Unbuyable(ingredient),
@@ -53,4 +56,5 @@ Enables(ingredient, drink) :-
 .
 
 .output Mixable(filename="mixable")
+.output MixableRecipe(filename="mixable-recipes", delimiter=" <- ")
 .output Enables(filename="shopping-list", delimiter=" -> ")
