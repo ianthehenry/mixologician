@@ -87,7 +87,7 @@ Okay. Since we already have vodka, all we need is dry vermouth. Let's buy it:
 
 Now we can mix a martini, and there are no further things that we should buy.
 
-Now let's make sure "subtyping" works.
+Now let's make sure that "subtyping" works.
 
   $ empty_bar
   $ add_recipe margarita tequila "lime juice" "orange liqueur"
@@ -107,7 +107,7 @@ tequila, we'll be able to.
   mixable: margarita
 
 Since we bought reposado tequila, there's no longer any reason to buy blanco
-tequila (at least according to our recipe book), so it goes away.
+tequila (according to our recipe book), so it goes away.
 
 Now let's test multi-ingredient syrups.
 
@@ -147,7 +147,7 @@ need to make a gimlet is lime.
   lime -> gimlet
 
 Nice. Notice that I can no longer just buy lime cordial, as that won't be
-sufficient -- can't make lime juice out of lime cordial.
+sufficient: I can't make lime juice out of lime cordial.
 
 Now I suspect that there's a bug in my current implementation, so let's make a
 silly-looking test where a recipe uses both an ingredient and a potential output
@@ -179,7 +179,8 @@ arbitrarily long Begets production chains?
 
 It didn't, the first time I tried this. But now I've fixed it.
 
-Now let's make sure that the "unbuyable" list is filtering things out correctly.
+Now let's make sure that the Unbuyable relation is filtering things out
+correctly.
 
   $ empty_recipe_book
   $ add_recipe gimlet gin "lime juice" "lime cordial"
@@ -204,4 +205,5 @@ it to mix the drink, if I happen to have some on hand:
   $ runtest
   mixable: gimlet
 
-The "Unbuyable" relation only affects output of the "Enables" relation.
+So we can see that the "Unbuyable" relation only affects output of the
+"Enables" relation.
