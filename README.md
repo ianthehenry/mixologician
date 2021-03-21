@@ -1,6 +1,6 @@
 # mixologician
 
-This is the code accompanying an as-yet-unpublished blog post. That I haven't even finished writing yet. So you're really snooping around, huh?
+This is the code accompanying a blog post I wrote called [Getting Drunk with Datalog](https://ianthehenry.com/posts/getting-drunk-with-datalog/).
 
 # show me
 
@@ -65,7 +65,7 @@ Well, because it knows some rules. It knows that limes make lime juice (and lime
 
 # cool
 
-It *is* cool. And you can read all about how it works, once I publish the post.
+It *is* cool. And you can read all about how it works, right here: [Getting Drunk with Datalog](https://ianthehenry.com/posts/getting-drunk-with-datalog/).
 
 # dependencies
 
