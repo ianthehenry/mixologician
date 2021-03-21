@@ -95,9 +95,9 @@ Now let's make sure that "subtyping" works.
   $ buy "orange liqueur"
   $ runtest
   shopping list:
-  tequila -> margarita
-  reposado tequila -> margarita
   blanco tequila -> margarita
+  reposado tequila -> margarita
+  tequila -> margarita
 
 Great. We can't make a margarita yet, but if we buy either generic or specific
 tequila, we'll be able to.
@@ -132,8 +132,8 @@ But once I buy sugar...
   $ buy sugar
   $ runtest
   shopping list:
-  lime cordial -> gimlet
   lime -> gimlet
+  lime cordial -> gimlet
 
 It lets me know that I could either buy lime cordial directly, or I could just
 buy limes.
@@ -172,10 +172,10 @@ arbitrarily long Begets production chains?
   $ add_recipe "shot of scotch" scotch
   $ runtest
   shopping list:
-  scotch -> shot of scotch
   really really specific scotch -> shot of scotch
-  specific scotch -> shot of scotch
   really specific scotch -> shot of scotch
+  scotch -> shot of scotch
+  specific scotch -> shot of scotch
 
 It didn't, the first time I tried this. But now I've fixed it.
 
