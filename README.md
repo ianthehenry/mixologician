@@ -87,7 +87,7 @@ From within your `nix-shell`:
 
     $ souffle mixologician.dl -F facts -D results
 
-That will create three files: [`results/mixable`](results/mixable), [`results/mixable-recipes`](results/mixable-recipes), and [`results/shopping-list`](results-shopping-list). `mixable` basically exists for tests and demos; `mixable-recipes` is a much more useful output. `shopping-list` will tell you all the ingredients you can buy that will allow you to make new drinks.
+That will create three files: `results/mixable`, `results/mixable-recipes`, and `results/shopping-list`. `mixable` basically exists for tests and demos; `mixable-recipes` is a much more useful output. `shopping-list` will tell you all the ingredients you can buy that will allow you to make new drinks.
 
 `shopping-list` only looks for recipes that you are *one ingredient* away from being able to make. So you might not get results, if you have a very sparse (or very comprehensive) bar. You might need to buy two new things to be able to make a new drink, and it won't tell you that. I think it would be *possible* to modify it to handle multiple missing ingredients, but I didn't try to do that.
 
