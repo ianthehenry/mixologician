@@ -166,7 +166,7 @@ arbitrarily long Begets production chains?
 
   $ empty_bar
   $ empty_recipe_book
-  $ echo 'really really specific scotch -> specific scotch' >>begets
+  $ echo 'really really specific scotch -> really specific scotch' >>begets
   $ echo 'really specific scotch -> specific scotch' >>begets
   $ echo 'specific scotch -> scotch' >>begets
   $ add_recipe "shot of scotch" scotch
